@@ -1,0 +1,40 @@
+program TestProgram 
+	int i, j, k;
+	int array2[1..5],array3[i..j],array4[i-j..i+j];
+	int array[5] := {1,2,3,4,5};
+	real r := {3.14};
+	char c;
+	bool flag := {true};
+	bool flag1 := {false};
+	procedure testFunction (int m,a,b;)
+	{
+		int x;
+		int y;
+		int temp;
+		{
+			x := a;
+			y := b;
+			do{
+				temp := y;
+				y := x % y;
+				x := temp;
+			}while y<>0;
+			switch m
+				case 1  : {return x;};
+				case 2  : {return (a*b)/x;};
+				default : {return false;};
+			end;
+
+			if i < 0 then {i := 7;} else {i := 10;};
+
+		}
+	};
+	main
+	{
+		i := 2;
+		j := 5;
+		k := 20;
+		testFunction (i, j, k);
+	}
+	
+

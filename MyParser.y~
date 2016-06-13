@@ -593,12 +593,12 @@ int main() {
 	pushToQuadTable("<", "a", "2", lt_place);
 	pushToQuadTable("=", "b", "3", eq_place);
 	pushToQuadTable("&&", lt_place, eq_place, ifex_place);
-	pushToQuadTable("cgoto", ifex_place, "", "LINE");
+	pushToQuadTable("cgoto", concat("!", ifex_place), "", "LINE");
 
 		// while
 		char* whex_place = newTemp("bool");
 		pushToQuadTable("<", "a", "1", whex_place);
-		pushToQuadTable("cgoto", whex_place, "", "LINE");
+		pushToQuadTable("cgoto", concat("!", whex_place), "", "LINE");
 	
 			// inside while
 			pushToQuadTable("+", "a", "1", "a");

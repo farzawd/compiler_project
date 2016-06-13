@@ -1,18 +1,103 @@
 %{
 
 #include <stdio.h>
+#include <vector>
+#include <cstring>
+#include <stdlib.h>
+
+FILE *fout;
+
+using namespace std;
+
+vector<char*> quadR[4];
+vector<char*> symbolTable[2];
+vector<char*> reg;
+
+int lookup(char* a)
+{
+//look up an identifier in the symbol table
+	for(int i = 0 ; i < symbolTable[0].size() ; i++)
+	{
+		if(strcmp(a, symbolTable[0].at(i)) == 0)
+			return i;
+	}
+	
+	return -1;
+}
+
+void insertToSymbolTable(char* id,char* type)
+{
+//insert a new identifier to the symbol table
+	symbolTable[0].push_back(id);
+	symbolTable[1].push_back(type);
+}
+
+int temp_counter = 0;
+char* newTemp(char* c)
+{
+//make a new temporary variable
+	char *temp = (char*)calloc(sizeof(char), 20);
+	sprintf(temp, "__temp_var_%d", temp_counter++);
+	return temp;
+}
+
+void printQuadToCode()
+{
+
+}
+
+char* concatnate(int Count,...)
+{
+
+}
+
+void pushToQuadTable(char* s0,char* s1,char* s2,char* s3)
+{
+		quadR[0].push_back(s0);
+		quadR[1].push_back(s1);
+		quadR[2].push_back(s2);
+		quadR[3].push_back(s3);
+}
+
+void backpatch(char* a,int b)
+{
+
+}
+
+char* merge(char* a,char* b)
+{
+	return concatnate(2,a,b);
+}
+
+char* makelist(int a)
+{
+
+}
+
+char* intToCharStar(int a)
+{
+
+}
+
+char* addToList(char* a)
+{
+
+}
+
+
 extern FILE *yyin;
 extern int yylineno;
 extern char* yytext;
 
+extern int yylex();
+
 void yyerror(const char *s);
- 
-FILE *fout;
+
 %}
 %union {
 	int ival;
 	float rval;
-	_Bool bval;
+	bool bval;
 	char* id;
 	char cval;
 }
@@ -407,7 +492,7 @@ arithmetic_expressions : expressions PLUS_KW expressions
 	};
 	| expressions MOD_KW expressions 
 	{
-		fprintf(fout, "Rule 71 \t arithmetic_expressions -> expressions % expressions   \n") ;
+		fprintf(fout, "Rule 71 \t arithmetic_expressions -> expressions [divide] expressions   \n") ;
 
 	};
 	| MINUS_KW expressions
@@ -419,6 +504,17 @@ arithmetic_expressions : expressions PLUS_KW expressions
 %%
 
 int main() {
+/*
+	printf("Parser program started...\nTesting symbol table: inserted variables 'int var1' and 'int var2'");
+	insertToSymbolTable("var1", "int");
+	insertToSymbolTable("var2", "int");
+	printf("lookup result for variables var1 and var2:\t");
+	printf("%d, %d\n", lookup("var1"), lookup("var2"));
+	
+	printf("reserving two temporary variables. reserved names: %s, %s\n", newTemp("int"), newTemp("int"));
+	printf("testing complete.");
+*/
+
 	yyin = stdin;
 	
 	fout = stdout;

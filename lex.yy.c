@@ -598,33 +598,7 @@ char *yytext;
 #include <stdlib.h>
 #include "MyParser.tab.h"
 
-
-
-
-FILE *fout;
-
-char* symbol_table[100];
-int counter=0;
-int install_id(char* next)
-{
-	int i;
-	for(i = 0 ; i < counter ; i++)
-	{
-		if(!strcmp(next, symbol_table[i]))
-		{
-			return i;
-		}
-	}
-	
-	char* var_name = (char *) malloc((strlen(next) + 1) * sizeof(char));
-	strcpy(var_name, next);
-	symbol_table[counter] = var_name;
-	
-	counter++;
-	
-	return counter - 1;
-}
-#line 628 "lex.yy.c"
+#line 602 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -838,11 +812,11 @@ YY_DECL
 		}
 
 	{
-#line 89 "MyLexer.l"
+#line 63 "MyLexer.l"
 
 
 
-#line 846 "lex.yy.c"
+#line 820 "lex.yy.c"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -901,266 +875,266 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 92 "MyLexer.l"
+#line 66 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("MAIN_KW\t-\n");return MAIN_KW;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 93 "MyLexer.l"
+#line 67 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("PROGRAM_KW\t-\n");return PROGRAM_KW;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 94 "MyLexer.l"
+#line 68 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("INTEGER_KW\t-\n");return INTEGER_KW;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 95 "MyLexer.l"
+#line 69 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("REAL_KW\t-\n");return REAL_KW;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 96 "MyLexer.l"
+#line 70 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("CHAR_KW\t-\n");return CHAR_KW;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 97 "MyLexer.l"
+#line 71 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("BOOLEAN_KW\t-\n");return BOOLEAN_KW;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 98 "MyLexer.l"
+#line 72 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("PROCEDURE_KW\t-\n");return PROCEDURE_KW;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 99 "MyLexer.l"
+#line 73 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("OR_KW\t-\n");return OR_KW;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 100 "MyLexer.l"
+#line 74 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("AND_KW\t-\n");return AND_KW;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 102 "MyLexer.l"
+#line 76 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("NOT_KW\t-\n");return NOT_KW;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 104 "MyLexer.l"
+#line 78 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("WHILE_KW\t-\n");return WHILE_KW;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 105 "MyLexer.l"
+#line 79 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("END_KW\t-\n");return END_KW;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 106 "MyLexer.l"
+#line 80 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("SWITCH_KW\t-\n");return SWITCH_KW;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 109 "MyLexer.l"
+#line 83 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("ASSIGN_KW\t-\n");return ASSIGN_KW;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 110 "MyLexer.l"
+#line 84 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("IF_KW\t-\n");return IF_KW;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 111 "MyLexer.l"
+#line 85 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("THEN_KW\t-\n");return THEN_KW;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 112 "MyLexer.l"
+#line 86 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("ELSE_KW\t-\n");return ELSE_KW;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 113 "MyLexer.l"
+#line 87 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("FOR_KW\t-\n");return FOR_KW;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 114 "MyLexer.l"
+#line 88 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("REPEAT_KW\t-\n");return REPEAT_KW;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 115 "MyLexer.l"
+#line 89 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("CASE_KW\t-\n");return CASE_KW;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 116 "MyLexer.l"
+#line 90 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("DO_KW\t-\n");return DO_KW;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 117 "MyLexer.l"
+#line 91 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("DEFAULT_KW\t-\n");return DEFAULT_KW;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 118 "MyLexer.l"
+#line 92 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("RETURN_KW\t-\n");return RETURN_KW;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 119 "MyLexer.l"
+#line 93 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("EXIT_KW\t-\n");return EXIT_KW;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 122 "MyLexer.l"
+#line 96 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("MOD\t-\n");return MOD_KW;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 123 "MyLexer.l"
+#line 97 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("MULTIPLY\t-\n");return MULTIPLY_KW;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 124 "MyLexer.l"
+#line 98 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("DIVIDE\t-\n");return DIVIDE_KW;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 125 "MyLexer.l"
+#line 99 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("PLUS\t-\n");return PLUS_KW;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 126 "MyLexer.l"
+#line 100 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("MINUS\t-\n");return MINUS_KW;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 128 "MyLexer.l"
+#line 102 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("RANGE\t-\n");return RANGE_KW;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 131 "MyLexer.l"
+#line 105 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("LT\t-\n");return LT_KW;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 132 "MyLexer.l"
+#line 106 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("LE\t-\n");return LE_KW;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 133 "MyLexer.l"
+#line 107 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("GE\t-\n");return GE_KW;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 134 "MyLexer.l"
+#line 108 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("GT\t-\n");return GT_KW;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 135 "MyLexer.l"
+#line 109 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("EQ\t-\n");return EQ_KW;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 136 "MyLexer.l"
+#line 110 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("NE\t-\n");return NE_KW;}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 139 "MyLexer.l"
+#line 113 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("(\t-\n");return '(';} 
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 140 "MyLexer.l"
+#line 114 "MyLexer.l"
 {printf("\t%s\t", yytext); printf(")\t-\n");return ')';}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 141 "MyLexer.l"
+#line 115 "MyLexer.l"
 {printf("\t%s\t", yytext); printf(",\t-\n");return ',';}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 142 "MyLexer.l"
+#line 116 "MyLexer.l"
 {printf("\t%s\t", yytext); printf(";\t-\n");return ';';}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 143 "MyLexer.l"
+#line 117 "MyLexer.l"
 {printf("\t%s\t", yytext); printf(":\t-\n");return ':';}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 144 "MyLexer.l"
+#line 118 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("[\t-\n");return '[';}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 145 "MyLexer.l"
+#line 119 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("]\t-\n");return ']';}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 146 "MyLexer.l"
+#line 120 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("{\t-\n");return '{';}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 147 "MyLexer.l"
+#line 121 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("}\t-\n");return '}';}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 151 "MyLexer.l"
+#line 125 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("BOOLEAN_CONSTANT\t-\n");return BOOLEAN_CONSTANT;}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 152 "MyLexer.l"
+#line 126 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("REAL_CONSTANT\t-\n");return REAL_CONSTANT;}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 153 "MyLexer.l"
+#line 127 "MyLexer.l"
 {printf("\t%s\t", yytext); printf("INTEGER_CONSTANT\t-\n");return INTEGER_CONSTANT;}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 154 "MyLexer.l"
-{printf("\t%s\t", yytext); printf("IDENTIFIER\t-\n");install_id(yytext); return IDENTIFIER;}
+#line 128 "MyLexer.l"
+{printf("\t%s\t", yytext); printf("IDENTIFIER\t-\n"); return IDENTIFIER;}
 	YY_BREAK
 case 50:
 /* rule 50 can match eol */
 YY_RULE_SETUP
-#line 156 "MyLexer.l"
+#line 130 "MyLexer.l"
 {++yylineno;}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 157 "MyLexer.l"
+#line 131 "MyLexer.l"
 {}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 160 "MyLexer.l"
+#line 134 "MyLexer.l"
 ECHO;
 	YY_BREAK
-#line 1164 "lex.yy.c"
+#line 1138 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2155,7 +2129,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 159 "MyLexer.l"
+#line 133 "MyLexer.l"
 
 
 /*

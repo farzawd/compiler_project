@@ -96,11 +96,11 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 12 "MyParser.y" /* yacc.c:1909  */
+#line 97 "MyParser.y" /* yacc.c:1909  */
 
 	int ival;
 	float rval;
-	_Bool bval;
+	bool bval;
 	char* id;
 	char cval;
 

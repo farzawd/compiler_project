@@ -66,15 +66,100 @@
 
 
 #include <stdio.h>
+#include <vector>
+#include <cstring>
+#include <stdlib.h>
+
+FILE *fout;
+
+using namespace std;
+
+vector<char*> quadR[4];
+vector<char*> symbolTable[2];
+vector<char*> reg;
+
+int lookup(char* a)
+{
+//look up an identifier in the symbol table
+	for(int i = 0 ; i < symbolTable[0].size() ; i++)
+	{
+		if(strcmp(a, symbolTable[0].at(i)) == 0)
+			return i;
+	}
+	
+	return -1;
+}
+
+void insertToSymbolTable(char* id,char* type)
+{
+//insert a new identifier to the symbol table
+	symbolTable[0].push_back(id);
+	symbolTable[1].push_back(type);
+}
+
+int temp_counter = 0;
+char* newTemp(char* c)
+{
+//make a new temporary variable
+	char *temp = (char*)calloc(sizeof(char), 20);
+	sprintf(temp, "__temp_var_%d", temp_counter++);
+	return temp;
+}
+
+void printQuadToCode()
+{
+
+}
+
+char* concatnate(int Count,...)
+{
+
+}
+
+void pushToQuadTable(char* s0,char* s1,char* s2,char* s3)
+{
+		quadR[0].push_back(s0);
+		quadR[1].push_back(s1);
+		quadR[2].push_back(s2);
+		quadR[3].push_back(s3);
+}
+
+void backpatch(char* a,int b)
+{
+
+}
+
+char* merge(char* a,char* b)
+{
+	return concatnate(2,a,b);
+}
+
+char* makelist(int a)
+{
+
+}
+
+char* intToCharStar(int a)
+{
+
+}
+
+char* addToList(char* a)
+{
+
+}
+
+
 extern FILE *yyin;
 extern int yylineno;
 extern char* yytext;
 
-void yyerror(const char *s);
- 
-FILE *fout;
+extern int yylex();
 
-#line 78 "MyParser.tab.c" /* yacc.c:339  */
+void yyerror(const char *s);
+
+
+#line 163 "MyParser.tab.c" /* yacc.c:339  */
 
 # ifndef YY_NULLPTR
 #  if defined __cplusplus && 201103L <= __cplusplus
@@ -160,15 +245,15 @@ extern int yydebug;
 typedef union YYSTYPE YYSTYPE;
 union YYSTYPE
 {
-#line 12 "MyParser.y" /* yacc.c:355  */
+#line 97 "MyParser.y" /* yacc.c:355  */
 
 	int ival;
 	float rval;
-	_Bool bval;
+	bool bval;
 	char* id;
 	char cval;
 
-#line 172 "MyParser.tab.c" /* yacc.c:355  */
+#line 257 "MyParser.tab.c" /* yacc.c:355  */
 };
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
@@ -183,7 +268,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 187 "MyParser.tab.c" /* yacc.c:358  */
+#line 272 "MyParser.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -485,14 +570,14 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint16 yyrline[] =
 {
-       0,    41,    41,    45,    49,    53,    58,    63,    69,    75,
-      79,    83,    87,    92,    96,   101,   105,   110,   114,   118,
-     124,   128,   132,   140,   149,   155,   162,   166,   172,   178,
-     184,   191,   196,   201,   206,   211,   217,   223,   228,   233,
-     238,   243,   248,   253,   261,   268,   273,   279,   285,   290,
-     295,   300,   305,   311,   316,   321,   326,   332,   337,   342,
-     347,   352,   357,   362,   367,   372,   377,   382,   388,   393,
-     398,   403,   408,   413
+       0,   126,   126,   130,   134,   138,   143,   148,   154,   160,
+     164,   168,   172,   177,   181,   186,   190,   195,   199,   203,
+     209,   213,   217,   225,   234,   240,   247,   251,   257,   263,
+     269,   276,   281,   286,   291,   296,   302,   308,   313,   318,
+     323,   328,   333,   338,   346,   353,   358,   364,   370,   375,
+     380,   385,   390,   396,   401,   406,   411,   417,   422,   427,
+     432,   437,   442,   447,   452,   457,   462,   467,   473,   478,
+     483,   488,   493,   498
 };
 #endif
 
@@ -1400,631 +1485,631 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 42 "MyParser.y" /* yacc.c:1646  */
+#line 127 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 1 \t\t program -> PROGRAM_KW IDENTIFIER declarations_list procedure_list MAIN_KW block \n") ;
 	}
-#line 1408 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1493 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 3:
-#line 46 "MyParser.y" /* yacc.c:1646  */
+#line 131 "MyParser.y" /* yacc.c:1646  */
     {
 	fprintf(fout, "Rule 2 \t\t program -> PROGRAM_KW IDENTIFIER  procedure_list MAIN_KW block \n") ;
 	}
-#line 1416 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1501 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
-#line 50 "MyParser.y" /* yacc.c:1646  */
+#line 135 "MyParser.y" /* yacc.c:1646  */
     {
 	fprintf(fout, "Rule 3 \t\t program -> PROGRAM_KW IDENTIFIER declarations_list MAIN_KW block \n") ;
 	}
-#line 1424 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1509 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 54 "MyParser.y" /* yacc.c:1646  */
+#line 139 "MyParser.y" /* yacc.c:1646  */
     {
 	fprintf(fout, "Rule 4 \t\t program -> PROGRAM_KW IDENTIFIER MAIN_KW block \n") ;
 	}
-#line 1432 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1517 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 59 "MyParser.y" /* yacc.c:1646  */
+#line 144 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 5 \t\t declarations_list -> declarations ; \n") ;
 	}
-#line 1440 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1525 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 64 "MyParser.y" /* yacc.c:1646  */
+#line 149 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 6 \t\t declarations_list -> declarations_list declarations \n") ;
 	}
-#line 1448 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1533 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 70 "MyParser.y" /* yacc.c:1646  */
+#line 155 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 7 \t\t declarations -> type_specifiers declarator_list ; \n") ;
 	}
-#line 1456 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1541 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 76 "MyParser.y" /* yacc.c:1646  */
+#line 161 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 8 \t\t type -> INTEGER_KW\n") ;
 	}
-#line 1464 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1549 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 80 "MyParser.y" /* yacc.c:1646  */
+#line 165 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 9 \t\t type -> REAL_KW\n") ;
 	}
-#line 1472 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1557 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 84 "MyParser.y" /* yacc.c:1646  */
+#line 169 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 10 \t type -> BOOL_KW\n") ;
 	}
-#line 1480 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1565 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 88 "MyParser.y" /* yacc.c:1646  */
+#line 173 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 11 \t type -> CHAR_KW\n") ;
 	}
-#line 1488 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1573 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 93 "MyParser.y" /* yacc.c:1646  */
+#line 178 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 12 \t declarator_list -> declarator \n") ;
 	}
-#line 1496 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1581 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 97 "MyParser.y" /* yacc.c:1646  */
+#line 182 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 13 \t declarator_list -> declarator_list , declarator \n") ;
 	}
-#line 1504 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1589 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 102 "MyParser.y" /* yacc.c:1646  */
+#line 187 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 14 \t declarator -> dec \n") ;
 	}
-#line 1512 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1597 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 106 "MyParser.y" /* yacc.c:1646  */
+#line 191 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 15 \t declarator -> dec ASSIGN_KW initializer  \n") ;
 	}
-#line 1520 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1605 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 111 "MyParser.y" /* yacc.c:1646  */
+#line 196 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 16 \t dec -> IDENTIFIER \n") ;
 	}
-#line 1528 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1613 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 115 "MyParser.y" /* yacc.c:1646  */
+#line 200 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 17 \t dec -> IDENTIFIER [range] \n") ;
 	}
-#line 1536 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1621 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 119 "MyParser.y" /* yacc.c:1646  */
+#line 204 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 18 \t dec -> IDENTIFIER[INTEGER_CONSTANT] \n") ;
-	}
-#line 1544 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 20:
-#line 125 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule 19 \t range -> IDENTIFIER RANGE_KW IDENTIFIER \n") ;
-	}
-#line 1552 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 21:
-#line 129 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule 20 \t range -> INTEGER_CONSTANT RANGE_KW INTEGER_CONSTANT \n") ;
-	}
-#line 1560 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 22:
-#line 133 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule 21 \t range -> arithmetic_expressions RANGE_KW arithmetic_expressions \n") ;
-	}
-#line 1568 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 23:
-#line 141 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule 22 \t initializer -> {initializer_list}  \n") ;
-	
-	}
-#line 1577 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 24:
-#line 150 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule 23 \t initializer_list -> constant_expressions  \n") ;
-
-	}
-#line 1586 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 25:
-#line 156 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule 24 \t initializer_list -> constant_expressions , initializer_list  \n") ;
-
-	}
-#line 1595 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 26:
-#line 163 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule  25 \t procedure_list -> procedure_list procedure   \n") ;
-	}
-#line 1603 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 27:
-#line 167 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule  26 \t procedure_list -> procedure  \n") ;
-	}
-#line 1611 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 28:
-#line 173 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule 27 \t procedure ->  PROCEDURE_KW IDENTIFIER parameters {declarations_list block } ;	  \n") ;
-
-	}
-#line 1620 "MyParser.tab.c" /* yacc.c:1646  */
-    break;
-
-  case 29:
-#line 179 "MyParser.y" /* yacc.c:1646  */
-    {
-		fprintf(fout, "Rule 28 \t parameters -> ( declarations_list )  \n") ;
-
 	}
 #line 1629 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
+  case 20:
+#line 210 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule 19 \t range -> IDENTIFIER RANGE_KW IDENTIFIER \n") ;
+	}
+#line 1637 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 21:
+#line 214 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule 20 \t range -> INTEGER_CONSTANT RANGE_KW INTEGER_CONSTANT \n") ;
+	}
+#line 1645 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 22:
+#line 218 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule 21 \t range -> arithmetic_expressions RANGE_KW arithmetic_expressions \n") ;
+	}
+#line 1653 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 23:
+#line 226 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule 22 \t initializer -> {initializer_list}  \n") ;
+	
+	}
+#line 1662 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 24:
+#line 235 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule 23 \t initializer_list -> constant_expressions  \n") ;
+
+	}
+#line 1671 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 25:
+#line 241 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule 24 \t initializer_list -> constant_expressions , initializer_list  \n") ;
+
+	}
+#line 1680 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 26:
+#line 248 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule  25 \t procedure_list -> procedure_list procedure   \n") ;
+	}
+#line 1688 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 27:
+#line 252 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule  26 \t procedure_list -> procedure  \n") ;
+	}
+#line 1696 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 28:
+#line 258 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule 27 \t procedure ->  PROCEDURE_KW IDENTIFIER parameters {declarations_list block } ;	  \n") ;
+
+	}
+#line 1705 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
+  case 29:
+#line 264 "MyParser.y" /* yacc.c:1646  */
+    {
+		fprintf(fout, "Rule 28 \t parameters -> ( declarations_list )  \n") ;
+
+	}
+#line 1714 "MyParser.tab.c" /* yacc.c:1646  */
+    break;
+
   case 30:
-#line 185 "MyParser.y" /* yacc.c:1646  */
+#line 270 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 29 \t block -> {statement_list}  \n") ;
 
 	}
-#line 1638 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1723 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 31:
-#line 192 "MyParser.y" /* yacc.c:1646  */
+#line 277 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 30 \t statement_list -> statement;  \n") ;
 
 	}
-#line 1647 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1732 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 32:
-#line 197 "MyParser.y" /* yacc.c:1646  */
+#line 282 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 31 \t statement_list -> statement_list statement ;  \n") ;
 
 	}
-#line 1656 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1741 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 33:
-#line 202 "MyParser.y" /* yacc.c:1646  */
+#line 287 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 32 \t statement_list -> ;  \n") ;
 	}
-#line 1664 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1749 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 34:
-#line 207 "MyParser.y" /* yacc.c:1646  */
+#line 292 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 33 \t statement -> IDENTIFIER ASSIGN_KW expressions  \n") ;
 
 	}
-#line 1673 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1758 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 35:
-#line 212 "MyParser.y" /* yacc.c:1646  */
+#line 297 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 34 \t statement -> IF_KW bool_expressions THEN_KW statement   \n") ;
 
 	}
-#line 1682 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1767 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 36:
-#line 218 "MyParser.y" /* yacc.c:1646  */
+#line 303 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 35 \t statement -> IF_KW bool_expressions THEN_KW statement ELSE_KW statement   \n") ;
 
 	}
-#line 1691 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1776 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 37:
-#line 224 "MyParser.y" /* yacc.c:1646  */
+#line 309 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 36 \t statement -> DO_KW statement WHILE_KW bool_expressions   \n") ;
 
 	}
-#line 1700 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1785 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 38:
-#line 229 "MyParser.y" /* yacc.c:1646  */
+#line 314 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 37 \t statement ->  FOR_KW IDENTIFIER IN_KW range REPEAT_KW statement  \n") ;
 
 	}
-#line 1709 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1794 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 39:
-#line 234 "MyParser.y" /* yacc.c:1646  */
+#line 319 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 38 \t statement -> SWITCH_KW expressions caseelement default END_KW  \n") ;
 
  	}
-#line 1718 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1803 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 40:
-#line 239 "MyParser.y" /* yacc.c:1646  */
+#line 324 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 39 \t statement -> IDENTIFIER '('arguments')'  \n") ;
 
  	}
-#line 1727 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1812 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 41:
-#line 244 "MyParser.y" /* yacc.c:1646  */
+#line 329 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 40 \t statement -> RETURN_KW expressions   \n") ;
 
  	}
-#line 1736 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1821 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 42:
-#line 249 "MyParser.y" /* yacc.c:1646  */
+#line 334 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 41 \t statement -> EXIT_KW WHEN_KW (bool_expressions)   \n") ;
 
  	}
-#line 1745 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1830 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 43:
-#line 254 "MyParser.y" /* yacc.c:1646  */
+#line 339 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 42 \t statement -> block  \n") ;
 
  	}
-#line 1754 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1839 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 44:
-#line 262 "MyParser.y" /* yacc.c:1646  */
+#line 347 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 43 \t arguments -> declarator_list  \n") ;
 
 	}
-#line 1763 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1848 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 45:
-#line 269 "MyParser.y" /* yacc.c:1646  */
+#line 354 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 44 \t caseelement ->  CASE_KW INTEGER_CONSTANT:block ;   \n") ;
 
 	}
-#line 1772 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1857 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 46:
-#line 274 "MyParser.y" /* yacc.c:1646  */
+#line 359 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 45 \t caseelement -> caseelement CASE_KW INTEGER_CONSTANT : block ;  \n") ;
 
 	}
-#line 1781 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1866 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 47:
-#line 280 "MyParser.y" /* yacc.c:1646  */
+#line 365 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 46 \t default -> DEFAULT_KW ':' block ';'   \n") ;
 
 	}
-#line 1790 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1875 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 48:
-#line 286 "MyParser.y" /* yacc.c:1646  */
+#line 371 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 47 \t expressions -> constant_expressions  \n") ;
 
 	}
-#line 1799 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1884 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 49:
-#line 291 "MyParser.y" /* yacc.c:1646  */
+#line 376 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 48 \t expressions -> bool_expressions  \n") ;
 
 	}
-#line 1808 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1893 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 50:
-#line 296 "MyParser.y" /* yacc.c:1646  */
+#line 381 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 49 \t expressions -> arithmetic_expressions  \n") ;
 
 	}
-#line 1817 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1902 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 51:
-#line 301 "MyParser.y" /* yacc.c:1646  */
+#line 386 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 50 \t expressions -> IDENTIFIER  \n") ;
 
 	}
-#line 1826 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1911 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 52:
-#line 306 "MyParser.y" /* yacc.c:1646  */
+#line 391 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 51 \t expressions -> (expressions)  \n") ;
 
 	}
-#line 1835 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1920 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 53:
-#line 312 "MyParser.y" /* yacc.c:1646  */
+#line 397 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 52 \t constant_expressions -> INTEGER_CONSTANT  \n") ;
 
 	}
-#line 1844 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1929 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 54:
-#line 317 "MyParser.y" /* yacc.c:1646  */
+#line 402 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 53 \t constant_expressions -> REAL_CONSTANT  \n") ;
 
 	}
-#line 1853 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1938 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 55:
-#line 322 "MyParser.y" /* yacc.c:1646  */
+#line 407 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 54 \t constant_expressions -> CHAR_CONSTANT  \n") ;
 
 	}
-#line 1862 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1947 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 56:
-#line 327 "MyParser.y" /* yacc.c:1646  */
+#line 412 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 55 \t constant_expressions -> BOOLEAN_CONSTANT  \n") ;
 
 	}
-#line 1871 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1956 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 57:
-#line 333 "MyParser.y" /* yacc.c:1646  */
+#line 418 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 56 \t bool_expressions ->  expressions < expressions  \n") ;
 
 	}
-#line 1880 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1965 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 58:
-#line 338 "MyParser.y" /* yacc.c:1646  */
+#line 423 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 57 \t bool_expressions ->  expressions <= expressions  \n") ;
 
 	}
-#line 1889 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1974 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 59:
-#line 343 "MyParser.y" /* yacc.c:1646  */
+#line 428 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 58 \t bool_expressions ->  expressions > expressions  \n") ;
 
 	}
-#line 1898 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1983 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 60:
-#line 348 "MyParser.y" /* yacc.c:1646  */
+#line 433 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 59 \t bool_expressions ->  expressions >= expressions  \n") ;
 
 	}
-#line 1907 "MyParser.tab.c" /* yacc.c:1646  */
+#line 1992 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 61:
-#line 353 "MyParser.y" /* yacc.c:1646  */
+#line 438 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 60 \t bool_expressions ->  expressions = expressions  \n") ;
 
 	}
-#line 1916 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2001 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 62:
-#line 358 "MyParser.y" /* yacc.c:1646  */
+#line 443 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 61 \t bool_expressions ->  expressions != expressions  \n") ;
 
 	}
-#line 1925 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2010 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 63:
-#line 363 "MyParser.y" /* yacc.c:1646  */
+#line 448 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 62 \t bool_expressions ->  expressions AND_KW expressions  \n") ;
 
 	}
-#line 1934 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2019 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 64:
-#line 368 "MyParser.y" /* yacc.c:1646  */
+#line 453 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 63 \t bool_expressions -> expressions OR_KW expressions   \n") ;
 
 	}
-#line 1943 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2028 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 65:
-#line 373 "MyParser.y" /* yacc.c:1646  */
+#line 458 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 64 \t bool_expressions -> expressions AND_KW THEN_KW expressions   \n") ;
 
 	}
-#line 1952 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2037 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 66:
-#line 378 "MyParser.y" /* yacc.c:1646  */
+#line 463 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 65 \t bool_expressions ->  expressions OR_KW ELSE_KW expressions   \n") ;
 
 	}
-#line 1961 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2046 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 67:
-#line 383 "MyParser.y" /* yacc.c:1646  */
+#line 468 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 66 \t bool_expressions ->  NOT_KW expressions  \n") ;
 
 	}
-#line 1970 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2055 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 68:
-#line 389 "MyParser.y" /* yacc.c:1646  */
+#line 474 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 67 \t arithmetic_expressions -> expressions + expressions   \n") ;
 
 	}
-#line 1979 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2064 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 69:
-#line 394 "MyParser.y" /* yacc.c:1646  */
+#line 479 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 68 \t arithmetic_expressions -> expressions - expressions   \n") ;
 
 	}
-#line 1988 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2073 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 70:
-#line 399 "MyParser.y" /* yacc.c:1646  */
+#line 484 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 69 \t arithmetic_expressions -> expressions * expressions   \n") ;
 
 	}
-#line 1997 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2082 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 71:
-#line 404 "MyParser.y" /* yacc.c:1646  */
+#line 489 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 70 \t arithmetic_expressions -> expressions / expressions   \n") ;
 
 	}
-#line 2006 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2091 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 72:
-#line 409 "MyParser.y" /* yacc.c:1646  */
+#line 494 "MyParser.y" /* yacc.c:1646  */
     {
-		fprintf(fout, "Rule 71 \t arithmetic_expressions -> expressions % expressions   \n") ;
+		fprintf(fout, "Rule 71 \t arithmetic_expressions -> expressions [divide] expressions   \n") ;
 
 	}
-#line 2015 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2100 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
   case 73:
-#line 414 "MyParser.y" /* yacc.c:1646  */
+#line 499 "MyParser.y" /* yacc.c:1646  */
     {
 		fprintf(fout, "Rule 72 \t arithmetic_expressions -> - expressions   \n") ;
 
 	}
-#line 2024 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2109 "MyParser.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 2028 "MyParser.tab.c" /* yacc.c:1646  */
+#line 2113 "MyParser.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -2252,10 +2337,21 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 419 "MyParser.y" /* yacc.c:1906  */
+#line 504 "MyParser.y" /* yacc.c:1906  */
 
 
 int main() {
+/*
+	printf("Parser program started...\nTesting symbol table: inserted variables 'int var1' and 'int var2'");
+	insertToSymbolTable("var1", "int");
+	insertToSymbolTable("var2", "int");
+	printf("lookup result for variables var1 and var2:\t");
+	printf("%d, %d\n", lookup("var1"), lookup("var2"));
+	
+	printf("reserving two temporary variables. reserved names: %s, %s\n", newTemp("int"), newTemp("int"));
+	printf("testing complete.");
+*/
+
 	yyin = stdin;
 	
 	fout = stdout;

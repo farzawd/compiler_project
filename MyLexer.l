@@ -4,32 +4,6 @@
 #include <stdlib.h>
 #include "MyParser.tab.h"
 
-
-
-
-FILE *fout;
-
-char* symbol_table[100];
-int counter=0;
-int install_id(char* next)
-{
-	int i;
-	for(i = 0 ; i < counter ; i++)
-	{
-		if(!strcmp(next, symbol_table[i]))
-		{
-			return i;
-		}
-	}
-	
-	char* var_name = (char *) malloc((strlen(next) + 1) * sizeof(char));
-	strcpy(var_name, next);
-	symbol_table[counter] = var_name;
-	
-	counter++;
-	
-	return counter - 1;
-}
 %}
 
 PROGRAM_KW (program)
@@ -151,7 +125,7 @@ WHITESPACE ([\t]|[\n]|[ ])*
 {BOOLEAN_CONSTANT} {printf("\t%s\t", yytext); printf("BOOLEAN_CONSTANT\t-\n");return BOOLEAN_CONSTANT;}
 {REAL_CONSTANT} {printf("\t%s\t", yytext); printf("REAL_CONSTANT\t-\n");return REAL_CONSTANT;}
 {INTEGER_CONSTANT} {printf("\t%s\t", yytext); printf("INTEGER_CONSTANT\t-\n");return INTEGER_CONSTANT;}
-{IDENTIFIER} {printf("\t%s\t", yytext); printf("IDENTIFIER\t-\n");install_id(yytext); return IDENTIFIER;}
+{IDENTIFIER} {printf("\t%s\t", yytext); printf("IDENTIFIER\t-\n"); return IDENTIFIER;}
 
 [\n] {++yylineno;}
 . {}

@@ -89,69 +89,69 @@ WHITESPACE ([\t]|[\n]|[ ])*
 %%
 
 
-{MAIN_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "MAIN_KW\t-\n");return MAIN_KW;}
-{PROGRAM_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "PROGRAM_KW\t-\n");return PROGRAM_KW;}
-{INTEGER_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "INTEGER_KW\t-\n");return INTEGER_KW;}
-{REAL_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "REAL_KW\t-\n");return REAL_KW;}
-{CHAR_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "CHAR_KW\t-\n");return CHAR_KW;}
-{BOOLEAN_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "BOOLEAN_KW\t-\n");return BOOLEAN_KW;}
-{PROCEDURE_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "PROCEDURE_KW\t-\n");return PROCEDURE_KW;}
-{OR_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "OR_KW\t-\n");return OR_KW;}
-{AND_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "AND_KW\t-\n");return AND_KW;}
+{MAIN_KW} {printf("\t%s\t", yytext); printf("MAIN_KW\t-\n");return MAIN_KW;}
+{PROGRAM_KW} {printf("\t%s\t", yytext); printf("PROGRAM_KW\t-\n");return PROGRAM_KW;}
+{INTEGER_KW} {printf("\t%s\t", yytext); printf("INTEGER_KW\t-\n");return INTEGER_KW;}
+{REAL_KW} {printf("\t%s\t", yytext); printf("REAL_KW\t-\n");return REAL_KW;}
+{CHAR_KW} {printf("\t%s\t", yytext); printf("CHAR_KW\t-\n");return CHAR_KW;}
+{BOOLEAN_KW} {printf("\t%s\t", yytext); printf("BOOLEAN_KW\t-\n");return BOOLEAN_KW;}
+{PROCEDURE_KW} {printf("\t%s\t", yytext); printf("PROCEDURE_KW\t-\n");return PROCEDURE_KW;}
+{OR_KW} {printf("\t%s\t", yytext); printf("OR_KW\t-\n");return OR_KW;}
+{AND_KW} {printf("\t%s\t", yytext); printf("AND_KW\t-\n");return AND_KW;}
 
-{NOT_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "NOT_KW\t-\n");return NOT_KW;}
+{NOT_KW} {printf("\t%s\t", yytext); printf("NOT_KW\t-\n");return NOT_KW;}
 
-{WHILE_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "WHILE_KW\t-\n");return WHILE_KW;}
-{END_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "END_KW\t-\n");return END_KW;}
-{SWITCH_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "SWITCH_KW\t-\n");return SWITCH_KW;}
-
-
-{ASSIGN_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "ASSIGN_KW\t-\n");return ASSIGN_KW;}
-{IF_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "IF_KW\t-\n");return IF_KW;}
-{THEN_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "THEN_KW\t-\n");return THEN_KW;}
-{ELSE_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "ELSE_KW\t-\n");return ELSE_KW;}
-{FOR_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "FOR_KW\t-\n");return FOR_KW;}
-{REPEAT_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "REPEAT_KW\t-\n");return REPEAT_KW;}
-{CASE_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "CASE_KW\t-\n");return CASE_KW;}
-{DO_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "DO_KW\t-\n");return DO_KW;}
-{DEFAULT_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "DEFAULT_KW\t-\n");return DEFAULT_KW;}
-{RETURN_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "RETURN_KW\t-\n");return RETURN_KW;}
-{EXIT_KW} {printf(fout, "\t%s\t", yytext); fprintf(fout, "EXIT_KW\t-\n");return EXIT_KW;}
+{WHILE_KW} {printf("\t%s\t", yytext); printf("WHILE_KW\t-\n");return WHILE_KW;}
+{END_KW} {printf("\t%s\t", yytext); printf("END_KW\t-\n");return END_KW;}
+{SWITCH_KW} {printf("\t%s\t", yytext); printf("SWITCH_KW\t-\n");return SWITCH_KW;}
 
 
-{MOD} {printf(fout, "\t%s\t", yytext); fprintf(fout, "MOD\t-\n");return MOD_KW;}
-{MULTIPLY} {printf(fout, "\t%s\t", yytext); fprintf(fout, "MULTIPLY\t-\n");return MULTIPLY_KW;}
-{DIVIDE} {printf(fout, "\t%s\t", yytext); fprintf(fout, "DIVIDE\t-\n");return DIVIDE_KW;}
-{PLUS} {printf(fout, "\t%s\t", yytext); fprintf(fout, "PLUS\t-\n");return PLUS_KW;}
-{MINUS} {printf(fout, "\t%s\t", yytext); fprintf(fout, "MINUS\t-\n");return MINUS_KW;}
-
-{RANGE} {printf(fout, "\t%s\t", yytext); fprintf(fout, "RANGE\t-\n");return RANGE_KW;}
-
-
-{LT} {printf(fout, "\t%s\t", yytext); fprintf(fout, "LT\t-\n");return LT_KW;}
-{LE} {printf(fout, "\t%s\t", yytext); fprintf(fout, "LE\t-\n");return LE_KW;}
-{GE} {printf(fout, "\t%s\t", yytext); fprintf(fout, "GE\t-\n");return GE_KW;}
-{GT} {printf(fout, "\t%s\t", yytext); fprintf(fout, "GT\t-\n");return GT_KW;}
-{EQ} {printf(fout, "\t%s\t", yytext); fprintf(fout, "EQ\t-\n");return EQ_KW;}
-{NE} {printf(fout, "\t%s\t", yytext); fprintf(fout, "NE\t-\n");return NE_KW;}
+{ASSIGN_KW} {printf("\t%s\t", yytext); printf("ASSIGN_KW\t-\n");return ASSIGN_KW;}
+{IF_KW} {printf("\t%s\t", yytext); printf("IF_KW\t-\n");return IF_KW;}
+{THEN_KW} {printf("\t%s\t", yytext); printf("THEN_KW\t-\n");return THEN_KW;}
+{ELSE_KW} {printf("\t%s\t", yytext); printf("ELSE_KW\t-\n");return ELSE_KW;}
+{FOR_KW} {printf("\t%s\t", yytext); printf("FOR_KW\t-\n");return FOR_KW;}
+{REPEAT_KW} {printf("\t%s\t", yytext); printf("REPEAT_KW\t-\n");return REPEAT_KW;}
+{CASE_KW} {printf("\t%s\t", yytext); printf("CASE_KW\t-\n");return CASE_KW;}
+{DO_KW} {printf("\t%s\t", yytext); printf("DO_KW\t-\n");return DO_KW;}
+{DEFAULT_KW} {printf("\t%s\t", yytext); printf("DEFAULT_KW\t-\n");return DEFAULT_KW;}
+{RETURN_KW} {printf("\t%s\t", yytext); printf("RETURN_KW\t-\n");return RETURN_KW;}
+{EXIT_KW} {printf("\t%s\t", yytext); printf("EXIT_KW\t-\n");return EXIT_KW;}
 
 
-"(" {printf(fout, "\t%s\t", yytext); fprintf(fout, "(\t-\n");return '(';} 
-")" {printf(fout, "\t%s\t", yytext); fprintf(fout, ")\t-\n");return ')';}
-"," {printf(fout, "\t%s\t", yytext); fprintf(fout, ",\t-\n");return ',';}
-";" {printf(fout, "\t%s\t", yytext); fprintf(fout, ";\t-\n");return ';';}
-":" {printf(fout, "\t%s\t", yytext); fprintf(fout, ":\t-\n");return ':';}
-"[" {printf(fout, "\t%s\t", yytext); fprintf(fout, "[\t-\n");return '[';}
-"]" {printf(fout, "\t%s\t", yytext); fprintf(fout, "]\t-\n");return ']';}
-"{" {printf(fout, "\t%s\t", yytext); fprintf(fout, "{\t-\n");return '{';}
-"}" {printf(fout, "\t%s\t", yytext); fprintf(fout, "}\t-\n");return '}';}
+{MOD} {printf("\t%s\t", yytext); printf("MOD\t-\n");return MOD_KW;}
+{MULTIPLY} {printf("\t%s\t", yytext); printf("MULTIPLY\t-\n");return MULTIPLY_KW;}
+{DIVIDE} {printf("\t%s\t", yytext); printf("DIVIDE\t-\n");return DIVIDE_KW;}
+{PLUS} {printf("\t%s\t", yytext); printf("PLUS\t-\n");return PLUS_KW;}
+{MINUS} {printf("\t%s\t", yytext); printf("MINUS\t-\n");return MINUS_KW;}
+
+{RANGE} {printf("\t%s\t", yytext); printf("RANGE\t-\n");return RANGE_KW;}
+
+
+{LT} {printf("\t%s\t", yytext); printf("LT\t-\n");return LT_KW;}
+{LE} {printf("\t%s\t", yytext); printf("LE\t-\n");return LE_KW;}
+{GE} {printf("\t%s\t", yytext); printf("GE\t-\n");return GE_KW;}
+{GT} {printf("\t%s\t", yytext); printf("GT\t-\n");return GT_KW;}
+{EQ} {printf("\t%s\t", yytext); printf("EQ\t-\n");return EQ_KW;}
+{NE} {printf("\t%s\t", yytext); printf("NE\t-\n");return NE_KW;}
+
+
+"(" {printf("\t%s\t", yytext); printf("(\t-\n");return '(';} 
+")" {printf("\t%s\t", yytext); printf(")\t-\n");return ')';}
+"," {printf("\t%s\t", yytext); printf(",\t-\n");return ',';}
+";" {printf("\t%s\t", yytext); printf(";\t-\n");return ';';}
+":" {printf("\t%s\t", yytext); printf(":\t-\n");return ':';}
+"[" {printf("\t%s\t", yytext); printf("[\t-\n");return '[';}
+"]" {printf("\t%s\t", yytext); printf("]\t-\n");return ']';}
+"{" {printf("\t%s\t", yytext); printf("{\t-\n");return '{';}
+"}" {printf("\t%s\t", yytext); printf("}\t-\n");return '}';}
 
 
 
-{BOOLEAN_CONSTANT} {printf(fout, "\t%s\t", yytext); fprintf(fout, "BOOLEAN_CONSTANT\t-\n");return BOOLEAN_CONSTANT;}
-{REAL_CONSTANT} {printf(fout, "\t%s\t", yytext); fprintf(fout, "REAL_CONSTANT\t-\n");return REAL_CONSTANT;}
-{INTEGER_CONSTANT} {printf(fout, "\t%s\t", yytext); fprintf(fout, "INTEGER_CONSTANT\t-\n");return INTEGER_CONSTANT;}
-{IDENTIFIER} {printf(fout, "\t%s\t", yytext); fprintf(fout, "IDENTIFIER\t-\n");install_id(yytext); return IDENTIFIER;}
+{BOOLEAN_CONSTANT} {printf("\t%s\t", yytext); printf("BOOLEAN_CONSTANT\t-\n");return BOOLEAN_CONSTANT;}
+{REAL_CONSTANT} {printf("\t%s\t", yytext); printf("REAL_CONSTANT\t-\n");return REAL_CONSTANT;}
+{INTEGER_CONSTANT} {printf("\t%s\t", yytext); printf("INTEGER_CONSTANT\t-\n");return INTEGER_CONSTANT;}
+{IDENTIFIER} {printf("\t%s\t", yytext); printf("IDENTIFIER\t-\n");install_id(yytext); return IDENTIFIER;}
 
 [\n] {++yylineno;}
 . {}
@@ -166,8 +166,8 @@ int main(int argc, char *argv[]) {
 
 yyin = fopen("input.txt", "r");	
 fout = fopen("output.txt", "w");
-fprintf(fout, "\n LEXER \n");
-fprintf(fout, "\tRegEx\tToken\tAttVal\n\n");
+printf(fout, "\n LEXER \n");
+printf(fout, "\tRegEx\tToken\tAttVal\n\n");
     if(yyin) {  
       yylex();
 	  fclose(yyin);           
